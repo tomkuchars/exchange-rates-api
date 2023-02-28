@@ -8,11 +8,11 @@
         <version>2.7.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.marcura</groupId>
+    <groupId>com.app</groupId>
     <artifactId>exchange-rates</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>exchange-rates</name>
-    <description>Marcura exchange rates application</description>
+    <description>Exchange rates application</description>
     <properties>
         <java.version>17</java.version>
     </properties>

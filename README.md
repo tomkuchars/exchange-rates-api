@@ -1,4 +1,4 @@
-# Marcura internal API for exchange rates
+# Exchange rates API
 
 Spring Boot application with rest API, H2 db connection and https://fixer.io/ integration.
 
