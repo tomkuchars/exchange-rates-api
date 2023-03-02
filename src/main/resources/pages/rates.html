@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Exchange rates</title>
+  <script type="text/javascript">
+    window.onload = () => new EventSource('/exchange/rates').onmessage = (e) => {
+      let data = JSON.parse(e.data);
+      document.getElementById('table-body').innerHTML +=
+        `<tr>
+        <td>` + data.id + `</td>
+        <td>` + data.base + `</td>
+        <td>` + data.currency + `</td>
+        <td>` + data.date + `</td>
+        <td>` + data.rate + `</td>
+        </tr>`;
+    };
+  </script>
+</head>
+
+<body>
+  <h1>Rates from db</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Base</th>
+        <th>Currency</th>
+        <th>Date</th>
+        <th>Rate</th>
+      </tr>
+    </thead>
+    <tbody id="table-body">
+    </tbody>
+  </table>
+</body>
+
+</html>
