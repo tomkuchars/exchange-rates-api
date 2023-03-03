@@ -27,16 +27,16 @@ public class ExchangeHandler {
 	}
 
 	public Mono<ServerResponse> events(ServerRequest request) {
-		Flux<Long> interval = Flux.interval(Duration.ofMillis(20));
+		// Flux<Long> interval = Flux.interval(Duration.ofMillis(20));
 		Flux<Rates> ratesEvents = Mono.just(ratesRepository.findAll().stream()
-				.limit(500)
 				.collect(Collectors.toList())) // TODO: use R2DBC
-				.flatMapMany(Flux::fromIterable);
-		Flux<Rates> zipped = Flux.zip(ratesEvents, interval, (key, value) -> key);
+				.flatMapMany(iter -> Flux.fromIterable(iter))
+				.delayElements(Duration.ofMillis(20));
+		// Flux<Rates> zipped = Flux.zip(ratesEvents, interval, (key, value) -> key);
 		return ServerResponse
 				.ok()
 				.contentType(MediaType.TEXT_EVENT_STREAM)
-				.body(zipped, Rates.class);
+				.body(ratesEvents, Rates.class);
 	}
 
 }

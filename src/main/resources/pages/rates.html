@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>Exchange rates</title>
   <script type="text/javascript">
-    window.onload = () => new EventSource('/exchange/rates').onmessage = (e) => {
+    const addLine = (e) => {
       let data = JSON.parse(e.data);
       document.getElementById('table-body').innerHTML +=
         `<tr>
@@ -16,11 +16,28 @@
         <td>` + data.rate + `</td>
         </tr>`;
     };
+
+    window.onload = () => {
+      let evtSource = new EventSource('/exchange/rates');
+      evtSource.onmessage = (e) => addLine(e);
+
+      document.getElementById('button-stop').onclick = () => {
+        evtSource.close();
+      };
+
+      document.getElementById('button-new').onclick = () => {
+        evtSource.close();
+        evtSource = new EventSource('/exchange/rates');
+        evtSource.onmessage = (e) => addLine(e);
+      };
+    }
   </script>
 </head>
 
 <body>
   <h1>Rates from db</h1>
+  <button id="button-new">New</button>
+  <button id="button-stop">Stop</button>
   <table>
     <thead>
       <tr>
