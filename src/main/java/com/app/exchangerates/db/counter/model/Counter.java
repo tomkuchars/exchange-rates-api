@@ -7,7 +7,8 @@ import java.time.LocalDate;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(indexes = @Index(name = "counter_currency_date", columnList = "currency,date"))
+@Table(uniqueConstraints = {
+        @UniqueConstraint(name = "counter_unique_currency_date", columnNames = { "currency", "date" }) })
 public class Counter {
 
     @Id
@@ -28,13 +29,6 @@ public class Counter {
 
     public Counter() {
 
-    }
-
-    public void increment() {
-        if (counter == null) {
-            counter = BigInteger.ZERO;
-        }
-        counter = counter.add(BigInteger.ONE);
     }
 
 }

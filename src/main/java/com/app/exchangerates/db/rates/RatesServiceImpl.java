@@ -1,6 +1,5 @@
 package com.app.exchangerates.db.rates;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +17,6 @@ public class RatesServiceImpl implements RatesService {
 
     private final FixerProperties fixerProperties;
 
-    @Autowired
     public RatesServiceImpl(RatesRepository ratesRepository, FixerProperties fixerProperties) {
         this.ratesRepository = ratesRepository;
         this.fixerProperties = fixerProperties;

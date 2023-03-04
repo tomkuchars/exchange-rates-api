@@ -25,7 +25,6 @@ public class ExchangeRouter {
 
 	@Bean
 	public RouterFunction<ServerResponse> route(ExchangeHandler exchangeHandler) {
-
 		return RouterFunctions
 				.route(GET("/rates"), request -> pageResponse(ratesHtml))
 				.andRoute(GET("/exchange/rates"), exchangeHandler::events);

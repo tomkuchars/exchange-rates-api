@@ -1,6 +1,5 @@
 package com.app.exchangerates.scheduler;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.app.exchangerates.db.rates.RatesService;
@@ -17,7 +16,6 @@ public class LoadRates {
 
     private final RatesService ratesService;
 
-    @Autowired
     public LoadRates(FixerClient fixerClient, RatesService ratesService) {
         this.fixerClient = fixerClient;
         this.ratesService = ratesService;

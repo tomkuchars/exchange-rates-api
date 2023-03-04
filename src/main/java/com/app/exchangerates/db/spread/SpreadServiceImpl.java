@@ -1,6 +1,5 @@
 package com.app.exchangerates.db.spread;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +13,6 @@ public class SpreadServiceImpl implements SpreadService {
     private final SpreadRepository spreadRepository;
     private final FixerProperties fixerProperties;
 
-    @Autowired
     public SpreadServiceImpl(SpreadRepository spreadRepository, FixerProperties fixerProperties) {
         this.spreadRepository = spreadRepository;
         this.fixerProperties = fixerProperties;

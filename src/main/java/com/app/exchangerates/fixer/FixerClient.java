@@ -1,6 +1,5 @@
 package com.app.exchangerates.fixer;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +15,6 @@ public class FixerClient {
 
     private final WebClient webClient;
 
-    @Autowired
     public FixerClient(FixerProperties fixerProperties) {
         this.fixerProperties = fixerProperties;
         this.webClient = WebClient.builder()
