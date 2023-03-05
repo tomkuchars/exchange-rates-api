@@ -62,6 +62,7 @@ public class CounterServiceImpl implements CounterService {
 
     @Override
     public void incrementCounter(String currency, LocalDate date) {
-        counterRepository.incrementCounter(currency, date);
+        // counterRepository.incrementCounter(currency, date);
+        counterRepository.incrementCounterUsingCriteria(currency, date);
     }
 }

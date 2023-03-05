@@ -8,7 +8,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(uniqueConstraints = {
-        @UniqueConstraint(name = "counter_unique_currency_date", columnNames = { "currency", "date" }) })
+        @UniqueConstraint(name = "counter_unique_currency_date", columnNames = { Counter_.CURRENCY, Counter_.DATE }) })
 public class Counter {
 
     @Id
