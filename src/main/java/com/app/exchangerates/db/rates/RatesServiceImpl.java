@@ -54,7 +54,7 @@ public class RatesServiceImpl implements RatesService {
     }
 
     @Override
-    public List<Rates> saveAll(List<Rates> ratesList) {
+    public Iterable<Rates> saveAll(List<Rates> ratesList) {
         return ratesRepository.saveAll(ratesList);
     }
 

@@ -1,9 +1,6 @@
 package com.app.exchangerates.scheduler;
 
 import java.time.LocalDateTime;
-import java.util.List;
-
-import com.app.exchangerates.db.rates.model.Rates;
 
 class LoadRatesRunnable implements Runnable {
     private final LoadRates loadRates;
@@ -15,7 +12,7 @@ class LoadRatesRunnable implements Runnable {
     @Override
     public void run() {
         System.out.println(LocalDateTime.now() + " Start loading exchange rates, thread name: " + Thread.currentThread().getName());
-        List<Rates> ratesList = loadRates.load();
-        System.out.println(LocalDateTime.now() + " Finish loading exchange rates, loaded: " + ratesList.size());
+        int size = loadRates.load();
+        System.out.println(LocalDateTime.now() + " Finish loading exchange rates, loaded: " + size);
     }
 }

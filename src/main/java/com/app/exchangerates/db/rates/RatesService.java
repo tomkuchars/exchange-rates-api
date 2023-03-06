@@ -17,5 +17,5 @@ public interface RatesService {
 
     Rates save(Rates rates);
 
-    List<Rates> saveAll(List<Rates> ratesList);
+    Iterable<Rates> saveAll(List<Rates> ratesList);
 }

@@ -3,7 +3,6 @@ package com.app.exchangerates.rest;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
-import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -72,8 +71,8 @@ public class Controller {
 
     @PutMapping("/exchange")
     public ResponseEntity<Integer> exchange() {
-        List<Rates> ratesList = loadRates.load();
-        return ResponseEntity.ok(ratesList.size());
+        int size = loadRates.load();
+        return ResponseEntity.ok(size);
     }
 
 }
